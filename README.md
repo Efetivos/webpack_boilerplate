@@ -46,11 +46,23 @@ Mudar parametro no Arquivo: \node_modules\terser-webpack-plugin\dist
 ### 3. Create src & dist folder
 ```bash
 .
+├── .git
 ├── .vscode
 ├── dist
+│   ├── images
+│       ├── img.png
+│   ├── app.bundle.js
+│   ├── app.css
+│   ├── contact.html
+│   ├── index.html
 ├── node_modules
 ├── src
+│   ├── js
+│       ├── main.js
 │   ├── app.js
+│   ├── app.sass
+│   ├── contact.pug
+│   ├── index.pug
 |
 ├── package.json
 ├── package-lock
