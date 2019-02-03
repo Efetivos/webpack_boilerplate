@@ -28,16 +28,16 @@ module.exports = {
                 })
             },
 
-            {
-                test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            },
+            //{
+            //    test: /\.m?js$/,
+            //    exclude: /(node_modules|bower_components)/,
+            //    use: {
+            //        loader: 'babel-loader',
+            //        options: {
+            //            presets: ['@babel/preset-env']
+            //        }
+            //    }
+            //},
 
             {
                 test: /\.pug$/,
@@ -85,11 +85,11 @@ module.exports = {
             filename: 'index.html',
             template: './src/index.pug'
         }),
-        new HtmlWebpackPlugin({
-            title: 'CONTACT PAGE',
-            filename: 'contact.html',
-            template: './src/contact.pug'
-        }),
+        //new HtmlWebpackPlugin({
+        //    title: 'CONTACT PAGE',
+        //    filename: 'contact.html',
+        //    template: './src/contact.pug'
+        //}),
         new ExtractTextPlugin({ //important: use: npm i -D extract-text-webpack-plugin@next
             filename: 'app.css',
         }),

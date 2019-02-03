@@ -1,5 +1,5 @@
 //* --------------- STYLE
-const css = require('./app.sass');
+const css = require('./sass/app.sass');
 
 //* --------------- LIBS
 import { TweenMax } from 'gsap'
@@ -10,7 +10,10 @@ import 'ScrollMagicGSAP'
 
 //* --------------- JS
 const { sayHelloTo } = require('./js/main.js');
+const { menuJs } = require('./js/menu.js');
 
 
 
-sayHelloTo(ScrollMagic)
+//* --------------- JS
+//sayHelloTo(ScrollMagic)
+menuJs()

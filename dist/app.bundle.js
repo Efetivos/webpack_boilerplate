@@ -558,18 +558,7 @@ eval("/*** IMPORTS FROM imports-loader ***/\nvar define = false;\n\nvar logLevel
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ \"./node_modules/gsap/index.js\");\n/* harmony import */ var gsap_scrollToPlugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/scrollToPlugin */ \"./node_modules/gsap/scrollToPlugin.js\");\n/* harmony import */ var scrollmagic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! scrollmagic */ \"./node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js\");\n/* harmony import */ var scrollmagic__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(scrollmagic__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var ScrollMagicGSAP__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ScrollMagicGSAP */ \"./node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js\");\n/* harmony import */ var ScrollMagicGSAP__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ScrollMagicGSAP__WEBPACK_IMPORTED_MODULE_3__);\n/*** IMPORTS FROM imports-loader ***/\nvar define = false; //* --------------- STYLE\n\nvar css = __webpack_require__(/*! ./app.sass */ \"./src/app.sass\"); //* --------------- LIBS\n\n\n\n\n\n //* --------------- JS\n\nvar _require = __webpack_require__(/*! ./js/main.js */ \"./src/js/main.js\"),\n    sayHelloTo = _require.sayHelloTo;\n\nsayHelloTo(scrollmagic__WEBPACK_IMPORTED_MODULE_2___default.a);\n\n//# sourceURL=webpack:///./src/app.js?");
-
-/***/ }),
-
-/***/ "./src/app.sass":
-/*!**********************!*\
-  !*** ./src/app.sass ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/app.sass?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ \"./node_modules/gsap/index.js\");\n/* harmony import */ var gsap_scrollToPlugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/scrollToPlugin */ \"./node_modules/gsap/scrollToPlugin.js\");\n/* harmony import */ var scrollmagic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! scrollmagic */ \"./node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js\");\n/* harmony import */ var scrollmagic__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(scrollmagic__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var ScrollMagicGSAP__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ScrollMagicGSAP */ \"./node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js\");\n/* harmony import */ var ScrollMagicGSAP__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ScrollMagicGSAP__WEBPACK_IMPORTED_MODULE_3__);\n/*** IMPORTS FROM imports-loader ***/\nvar define = false;\n\n//* --------------- STYLE\r\nconst css = __webpack_require__(/*! ./sass/app.sass */ \"./src/sass/app.sass\");\r\n\r\n//* --------------- LIBS\r\n\r\n\r\n\r\n\r\n\r\n\r\n//* --------------- JS\r\nconst { sayHelloTo } = __webpack_require__(/*! ./js/main.js */ \"./src/js/main.js\");\r\nconst { menuJs } = __webpack_require__(/*! ./js/menu.js */ \"./src/js/menu.js\");\r\n\r\n\r\n\r\n//* --------------- JS\r\n//sayHelloTo(ScrollMagic)\r\nmenuJs()\r\n\n\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
@@ -580,7 +569,29 @@ eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./sr
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("/* WEBPACK VAR INJECTION */(function($) {/*** IMPORTS FROM imports-loader ***/\nvar define = false;\n\nvar sayHelloTo = function sayHelloTo(ScrollMagic) {\n  var controller = new ScrollMagic.Controller();\n  console.log('exportado');\n  $('body').click(function () {\n    TweenMax.to(window, 1.5, {\n      scrollTo: {\n        y: 0\n      }\n    });\n  }); //- --------------------- scene wrapped\n  //- --------------------- scene wrapped\n\n  $('img').each(function () {\n    var tlWrappedAbout = new TimelineMax().to(this, 1.8, {\n      scale: 1.2,\n      rotation: '+=180',\n      ease: Power3.easeOut\n    });\n    var scenewrapped = new ScrollMagic.Scene({\n      triggerElement: this,\n      triggerHook: .1111\n    }).setTween(tlWrappedAbout).addTo(controller);\n  });\n};\n\nmodule.exports = {\n  sayHelloTo: sayHelloTo\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./src/js/main.js?");
+eval("/* WEBPACK VAR INJECTION */(function($) {/*** IMPORTS FROM imports-loader ***/\nvar define = false;\n\n\r\nconst sayHelloTo = function (ScrollMagic) {\r\n    let controller = new ScrollMagic.Controller()\r\n    console.log('exportado')\r\n\r\n\r\n    $('body').click(function(){\r\n        TweenMax.to(window, 1.5,{scrollTo:{y: 0}})\r\n    })\r\n\r\n       //- --------------------- scene wrapped\r\n    //- --------------------- scene wrapped\r\n\r\n    $('img').each(function () {\r\n        let tlWrappedAbout = new TimelineMax()\r\n        .to(this, 1.8, { scale: 1.2, rotation:'+=180', ease: Power3.easeOut });\r\n        \r\n        let scenewrapped = new ScrollMagic.Scene({\r\n            triggerElement: this,\r\n            triggerHook: .1111\r\n        })\r\n    .setTween(tlWrappedAbout)\r\n        .addTo(controller)\r\n    });\r\n\r\n\r\n\r\n}\r\n\r\n\r\nmodule.exports = {\r\n    sayHelloTo\r\n}\n\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./src/js/main.js?");
+
+/***/ }),
+
+/***/ "./src/js/menu.js":
+/*!************************!*\
+  !*** ./src/js/menu.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("/* WEBPACK VAR INJECTION */(function($) {/*** IMPORTS FROM imports-loader ***/\nvar define = false;\n\n\r\nconst menuJs = function () {\r\n    \r\n    let menuOpen = false;\r\n    let tlMenuMob = new TimelineMax({ paused: true })\r\n        .from('.menu-mob', 1.2, { autoAlpha: 0, width: 0, ease: Power3.easeInOut, right: 0 })\r\n        .staggerFrom('.box-logo-menu, .box-links-mob a', 1.2, { autoAlpha: 0, y: 80, ease: Power2.easeOut }, 0.1, '-=.2')\r\n        .addPause().add('exitMenu')\r\n        .to('.menu-mob', 1.6, { width: 0, ease: Power3.easeInOut, left: 0 })\r\n        .to('.menu-mob a, .box-logo-menu, .desenvolvido', 1, { autoAlpha: 0, x: -50, ease: Power3.easeInOut }, '-=1.4')\r\n        .add(function () { menuOpen = false })\r\n        .to('.menu-mob', .00001, { autoAlpha: 0, width: 0, })\r\n        .add(function () { $('.line').text('contato'); }, '-=.6');\r\n    $('.holder-trg-menu, .menu-mob .box-links-mob a, .menu-mob').click(function () {\r\n        if (!menuOpen) {\r\n            menuOpen = true;\r\n            tlMenuMob.play(0);\r\n            $('.line').text('fechar');\r\n        } else {\r\n            tlMenuMob.play('exitMenu');\r\n        }\r\n    })\r\n    $(\".ctn-trigger-menu\").click(function () {\r\n        tlTriggerMenu.reversed(!tlTriggerMenu.reversed());\r\n    });\r\n    // // <!-- --------------- MENU DESK --------------- -->\r\n    let tracoMenu = $('.traco-menu');\r\n    TweenMax.set('.traco-menu', { scaleX: 0 })\r\n    $('.link-menu-desk').hover(\r\n        function () {\r\n            TweenMax.to($(this).find('.traco-menu'), .6, { scaleX: 1, transformOrigin: 'left', ease: Power3.easeIn })\r\n        }, function () {\r\n\r\n            TweenMax.to($(this).find('.traco-menu'), .6, { scaleX: 0, transformOrigin: 'right', ease: Power3.easeOut })\r\n        }\r\n    );\r\n\r\n    console.log('hi from menu');\r\n    \r\n\r\n\r\n}\r\n\r\n\r\nmodule.exports = {\r\n    menuJs\r\n}\n\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./src/js/menu.js?");
+
+/***/ }),
+
+/***/ "./src/sass/app.sass":
+/*!***************************!*\
+  !*** ./src/sass/app.sass ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/sass/app.sass?");
 
 /***/ }),
 
