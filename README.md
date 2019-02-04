@@ -112,7 +112,7 @@ module.exports = {
     ],
 
     optimization: {
-        minimizer: [new UglifyJsPlugin()],
+        minimize: true
     },
 
 
@@ -433,3 +433,18 @@ Mudar parametro no Arquivo: \node_modules\terser-webpack-plugin\dist
 
 
 ```
+
+
+## 12. Install MiniCssExtractPlugin
+```bash
+    //install 
+    npm install --save-dev mini-css-extract-plugin
+
+```
+
+# Production MODE [ENV]
+1.  Install Webpack Merge
+> npm install --save-dev webpack-merge
+
+2.  Install Clean Webpack Plugin
+> npm install --save-dev clean-webpack-plugin
