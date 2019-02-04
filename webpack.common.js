@@ -1,15 +1,13 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
 
 
 module.exports = {
-    //mode: 'production', //most important
-    //mode: 'development', //most important
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, './build'),
@@ -29,16 +27,16 @@ module.exports = {
                 })
             },
 
-            //{
-            //    test: /\.m?js$/,
-            //    exclude: /(node_modules|bower_components)/,
-            //    use: {
-            //        loader: 'babel-loader',
-            //        options: {
-            //            presets: ['@babel/preset-env']
-            //        }
-            //    }
-            //},
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
 
             {
                 test: /\.pug$/,
@@ -74,10 +72,6 @@ module.exports = {
         stats: 'errors-only',
         open: true
     },
-
-
-
-
     // ------------------  PLUGINS
     // ------------------  PLUGINS
     plugins: [
@@ -95,16 +89,21 @@ module.exports = {
         new ExtractTextPlugin({ //important: use: npm i -D extract-text-webpack-plugin@next
             filename: 'app.css',
         }),
+        new OptimizeCssnanoPlugin({
+            cssnanoOptions: {
+              preset: ['default', {
+                discardComments: {
+                  removeAll: true,
+                },
+              }],
+            },
+          }),
         new WriteFilePlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
         })
     ],
-
-    optimization: {
-        minimize: true
-    },
 
 
 

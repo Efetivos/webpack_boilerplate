@@ -443,8 +443,36 @@ Mudar parametro no Arquivo: \node_modules\terser-webpack-plugin\dist
 ```
 
 # Production MODE [ENV]
-1.  Install Webpack Merge
+1. Install Webpack Merge
 > npm install --save-dev webpack-merge
 
-2.  Install Clean Webpack Plugin
+2. Install Clean Webpack Plugin
 > npm install --save-dev clean-webpack-plugin
+
+3. Install CssNano Plugin
+> npm install --save-dev @intervolga/optimize-cssnano-plugin
+
+## CSS NANO
+```bash
+    //install 
+    npm install --save-dev @intervolga/optimize-cssnano-plugin
+
+    //instance
+    const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+
+    //on plugins
+    plugins: [
+
+        new OptimizeCssnanoPlugin({
+            cssnanoOptions: {
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                }],
+            },
+        }),
+    
+    ]
+
+```
