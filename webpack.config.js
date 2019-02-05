@@ -4,7 +4,43 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
+const fs = require('fs')
 
+// Our function that generates our html plugins
+function generateHtmlPluginsViews(pathViews, pathIncludes) {
+    // Read files in template directory
+    let filesViews = fs.readdirSync(path.resolve(__dirname, pathViews))
+    return filesViews.map(item => {
+        // Split names and extension
+        let parts = item.split('.')
+        let name = parts[0]
+        // Create new HTMLWebpackPlugin with options
+        return new HtmlWebpackPlugin({
+            filename: `./views/${name}.html`,
+            template: path.resolve(__dirname, `${pathViews}/${name}.pug`),
+        })
+    })
+}
+
+// Our function that generates our html plugins
+function generateHtmlPluginsIncludes(pathIncludes) {
+    // Read files in template directory
+    let filesIncludes = fs.readdirSync(path.resolve(__dirname, pathIncludes))
+    return filesIncludes.map(item => {
+        // Split names and extension
+        let parts = item.split('.')
+        let name = parts[0]
+        // Create new HTMLWebpackPlugin with options
+        return new HtmlWebpackPlugin({
+            filename: `./includes/${name}.html`,
+            template: path.resolve(__dirname, `${pathIncludes}/${name}.pug`),
+        })
+    })
+}
+
+// Call our function on our views directory.
+const htmlPluginsViews = generateHtmlPluginsViews('./src/pug/views')
+const htmlPluginsIncludes = generateHtmlPluginsIncludes('./src/pug/includes')
 
 module.exports = {
     mode: 'development', //most important
@@ -78,31 +114,26 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'INDEX PAGE',
             filename: 'index.html',
-            template: './src/index.pug'
+            template: './src/pug/views/home.pug'
         }),
-        //new HtmlWebpackPlugin({
-        //    title: 'CONTACT PAGE',
-        //    filename: 'contact.html',
-        //    template: './src/contact.pug'
-        //}),
         new ExtractTextPlugin({ //important: use: npm i -D extract-text-webpack-plugin@next
             filename: 'app.css',
         }),
         new OptimizeCssnanoPlugin({
             cssnanoOptions: {
-              preset: ['default', {
-                discardComments: {
-                  removeAll: true,
-                },
-              }],
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                }],
             },
-          }),
+        }),
         new WriteFilePlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
         })
-    ],
+    ].concat(htmlPluginsViews).concat(htmlPluginsIncludes),
 
 
 

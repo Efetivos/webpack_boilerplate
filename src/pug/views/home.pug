@@ -1,9 +1,11 @@
-extends ./pug/layout/template
+extends ../index
 block title
+    title Dynamic Title
 
 block content
     .box-img-header.e-wvw.e-hvh.e-hiiden.e-flex.e-rel
         img.img-header.e-wp.e-hp.e-img-fir.e-abs(src="http://unsplash.it/1089")
-        h1.h1-header.e-abs.e-white TITLE HEADER IMG
+        h1.h1-header.e-abs.e-white HOME PAGE
     
 append footer
+  script(src='/vendor/three.js')

@@ -5,7 +5,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
+const fs = require('fs')
 
+// Our function that generates our html plugins
+function generateHtmlPluginsViews(pathViews, pathIncludes) {
+    // Read files in template directory
+    let filesViews = fs.readdirSync(path.resolve(__dirname, pathViews))
+    return filesViews.map(item => {
+        // Split names and extension
+        let parts = item.split('.')
+        let name = parts[0]
+        // Create new HTMLWebpackPlugin with options
+        return new HtmlWebpackPlugin({
+            filename: `${name}.html`,
+            template: path.resolve(__dirname, `${pathViews}/${name}.pug`),
+        })
+    })
+}
+
+
+// Call our function on our views directory.
+const htmlPluginsViews = generateHtmlPluginsViews('./src/pug/views')
 
 module.exports = {
     entry: './src/app.js',
@@ -79,13 +99,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'INDEX PAGE',
             filename: 'index.html',
-            template: './src/index.pug'
+            template: './src/pug/views/home.pug'
         }),
-        //new HtmlWebpackPlugin({
-        //    title: 'CONTACT PAGE',
-        //    filename: 'contact.html',
-        //    template: './src/contact.pug'
-        //}),
         new ExtractTextPlugin({ //important: use: npm i -D extract-text-webpack-plugin@next
             filename: 'app.css',
         }),
@@ -103,7 +118,7 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery'
         })
-    ],
+    ].concat(htmlPluginsViews),
 
 
 
